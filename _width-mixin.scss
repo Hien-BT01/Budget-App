@@ -1,0 +1,4 @@
+@mixin getWidth($value) {
+    max-width: $value;
+    width: 100%;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget app</title>
+    <link rel="stylesheet" href="app.css">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+</head>
+
+<body>
+    <div class="budget-container">
+        <h2 class="app-title">CodeExplained</h2>
+        <div class="budget-header">
+            <div class="balance">
+                <h2 class="balance__title">Balance</h2>
+                <div class="balance__value"></div>
+            </div>
+            <div class="account">
+                <div class="income">
+                    <h2 class="income__title">Income</h2>
+                    <div class="income__total">
+                        <small>$</small>0
+                    </div>
+                </div>
+                <div class="chart"></div>
+                <div class="outcome">
+                    <h2 class="outcome__title">Expense</h2>
+                    <div class="outcome__total">
+                        <small>$</small>0
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="budget-dashboard">
+            <h2 class="budget-dashboard__title">DashBoard</h2>
+            <div class="budget-dashboard__toggle">
+                <div class="tab-1">Expenses</div>
+                <div class="tab-2">Income</div>
+                <div class="tab-3 active">All</div>
+            </div>
+            <div class="hide" id="expense">
+                <ul class="list">
+                    <!-- <li class="list__item">
+                        <h3 class="entry">Salary: $8000</h3>
+                        <div class="edit"><i class="far fa-edit"></i></div>
+                        <div class="delete"><i class="fas fa-trash"></i></div>
+                    </li> -->
+                </ul>
+                <div class="input">
+                    <input type="text" id="expense-title__input" name="title" placeholder="Title">
+                    <input type="number" id="expense-amount__input" name="amount" placeholder="$0">
+                    <div class="add-expense">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                </div>
+            </div>
+            <div id="income" class="hide">
+                <ul class="list">
+                    <!-- <li class="list__item">
+                        <h3 class="entry">Salary: $3000</h3>
+                        <div class="edit"><i class="far fa-edit"></i></div>
+                        <div class="delete"><i class="fas fa-trash"></i></div>
+                    </li> -->
+                </ul>
+                <div class="input">
+                    <input type="text" id="income-title__input" name="title" placeholder="Title">
+                    <input type="number" id="income-amount__input" name="amount" placeholder="$0">
+                    <div class="add-income">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                </div>
+            </div>
+            <div id="all" class="hide">
+                <ul class="list">
+                    <!-- <li class="list__item">
+                        <h3 class="entry">Salary: $8000</h3>
+                        <div class="edit"></div>
+                        <div class="delete"><i class="fas fa-trash"></i></div>
+                    </li> -->
+                </ul>
+                <!-- <div class="input">
+                    <input type="text" id="income-title__input" name="title" placeholder="Title">
+                    <input type="text" id="income-amout__input" name="amount" placeholder="$0">
+                    <div class="add-income">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="chart.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

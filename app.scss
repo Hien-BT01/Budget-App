@@ -1,0 +1,281 @@
+@import "./width-mixin.scss";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  list-style: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+html{
+    font-size: 62.5%;
+}
+body {
+  background-color: #222;
+  color: #fefefe;
+}
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.budget-container{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    max-width: 36rem;
+    width: 100%;
+    height: 100vh;
+    background-color: #3f0a79da;
+    .app-title{
+        margin-top: 4.5rem;
+        margin-left: 2rem;
+    }
+    // BUDGET HEADER
+
+    .budget-header{
+        .balance{
+            margin-top: 4.5rem;
+            margin-left: 2rem;
+            &__title{
+                color: #FFF;
+                font-size: 2rem;
+            }
+            &__value{
+                color: #FFF;
+                font-size: 3rem;
+                font-weight: 400;
+                margin-top: 1rem;
+            }
+        }
+    }
+    .account{
+        display: block;
+        max-width: 310px;
+        margin: 3.5rem auto 0;
+        line-height: 1.7em;
+        text-align: center;
+        word-wrap: 100%;
+        .income,.chart,.outcome{
+            height: 5rem;
+            display: inline-block;
+            max-width: 10rem;
+            width: 100%;
+            vertical-align: middle;
+        }
+        .income{
+            &__title{
+                opacity: 0.5;
+                margin-bottom: 0.8rem;
+            }
+            &__total{
+                font-size: 1.4rem;
+            }
+        }
+        .outcome{
+            &__title{
+                opacity: 0.5;
+                margin-bottom: 0.8rem;
+            }
+            &__total{
+                font-size: 1.4rem;
+                color: #f0624d;
+            }
+        }
+    }
+    // BUDGET DASHBOARD
+    .budget-dashboard{
+        display: block;
+        width: 100%;
+        max-width: 36rem;
+        height: 48.5rem;
+        background-color: #FFF;
+        margin-top: 3.5rem;
+        border-radius: 30px 30px 0 0;
+        overflow: hidden;
+        &__title{
+            display: inline-block;
+            color: #1a0034;
+            font-size: 2.4rem;
+            margin-left: 2rem;
+            margin-top: 3rem;
+        }
+        &__toggle{
+            margin-top: 3rem;
+            margin-left: 2rem;
+            @for $i from 1 through 3{
+                .tab-#{$i}{
+                    display: inline-block;
+                    cursor: pointer;
+                    font-size: 1.6rem;
+                    color: #1a0034;
+                    opacity: 0.4;
+                }
+                @if($i == 2 or $i == 3){
+                    .tab-#{$i}{
+                        margin-left: 1rem;
+                    }
+                }
+            }
+            .active{
+                opacity: 1 !important;
+            }
+            input{
+                -webkit-user-select: auto;      
+                -moz-user-select: auto;
+                -ms-user-select: auto;
+                user-select:auto;
+            }
+        }
+        #all,#expense,#income{
+            @include getWidth(36rem);
+            height: 340px;
+            position: relative;
+            .list{
+                @include getWidth(36rem);
+                min-height: 28.5rem;
+                margin-top:2rem;
+                overflow-x: auto;
+                color: #1a0034;
+                &__item{
+                    display: flex;
+                    position: relative;
+                    font-size: 1.6rem;
+                    align-items: center;
+                    .entry{
+                        width:25rem;
+                        height: auto;
+                        padding-left: 2rem;
+                        margin-bottom: 10px;
+                        word-wrap: break-word;
+                    }
+                    .edit{
+                        // visibility: hidden;
+                        position: absolute;
+                        top: 3.5px;
+                        right: 50px;
+                        cursor: pointer;
+                        .fa-edit{
+                            color: #333;
+                            font-size: 2.2rem;
+                        }
+                    }
+                    .delete{
+                        position: absolute;
+                        top: 0;
+                        font-size: 2rem;
+                        cursor: pointer;
+                        right: 20px;
+                    }
+                }
+            }
+            .input{
+                i{
+                    cursor: pointer;
+                    font-size: 3rem;
+                    color: rgb(34, 145, 108);
+                }
+            }
+        }
+        #expense{
+            .list{
+                &__item{
+                    .entry{
+                        color: #f0624d;
+                    }
+                }
+            }
+        }
+        #all .list{
+            &__item.expense{
+                color: #f0624d;
+            }
+            &__item{
+                .edit{
+                    display: none;
+                }
+            }
+        }
+        #expense .input,#income .input{
+            display: flex;
+            position: absolute;
+            align-items: center;
+            @include getWidth(36rem);
+            bottom: 0;
+            border-top: 1px solid #ccc;
+        }
+        #expense{
+            &-title__input,&-amount__input{
+                width: 100%;
+                border: 1px solid #333 !important;
+                height: 40px;
+                border-radius: 1rem;
+                outline: none;
+                font-size: 1.8rem;
+                margin: 5px;
+                padding-left: 1.2rem
+            }
+            &-title__input{
+                flex: 2;
+                @include getWidth(15rem);
+                margin-left: 1rem;
+            }
+            &-amount__input{
+                @include getWidth(11rem);
+                margin-left: 1rem;
+                margin-right: 2rem;
+            }
+        }
+        #income{
+            &-title__input,&-amount__input{
+                width: 100%;
+                border: 1px solid #333 !important;
+                height: 40px;
+                border-radius: 1rem;
+                outline: none;
+                font-size: 1.8rem;
+                margin: 5px;
+                padding-left: 1.2rem
+            }
+            &-title__input{
+                flex: 2;
+                @include getWidth(15rem);
+                margin-left: 1rem;
+            }
+            &-amount__input{
+                @include getWidth(11rem);
+                margin-left: 1rem;
+                margin-right: 2rem;
+            }
+        }
+        .hide{
+            display: none;
+        }
+    }
+    .fa-trash{
+        color: rgba(77, 69, 69, 0.877) !important;
+    }
+    .fa-edit{
+        color: #179bb3 !important;
+    }
+    @media screen and (max-width:476px) {
+        max-width: 30rem;
+        .account{
+            .income,.chart,.outcome{
+                max-width: 8rem;
+            }
+        }
+        .budget-dashboard{
+            max-width: 30rem;
+        }
+    }
+}
