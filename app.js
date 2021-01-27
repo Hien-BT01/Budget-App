@@ -54,6 +54,38 @@ $(document).ready(function () {
         $("#income-title__input").val("")
         $("#income-amount__input").val("")
     });
+    $("#expense-amount__input").keyup(function (event) { 
+        if(event.which === 13){
+            if(!$("#expense-title__input").val() || !$("#expense-amount__input").val()){
+                return;
+            }
+            let expense = {
+                type: "expense",
+                title: $("#expense-title__input").val(),
+                amount : parseInt($("#expense-amount__input").val())
+            }
+            ENTRY_LIST.push(expense);
+            updateValue();
+            $("#expense-title__input").val("");
+            $("#expense-amount__input").val("")
+        }
+    });
+    $("#income-amount__input").keyup(function (event) { 
+        if(event.which === 13){
+            if(!$("#income-title__input").val() || !$("#income-amount__input").val()){
+                return;
+            }
+            let income = {
+                type: "income",
+                title: $("#income-title__input").val(),
+                amount : parseInt($("#income-amount__input").val())
+            }
+            ENTRY_LIST.push(income);
+            updateValue();
+            $("#income-title__input").val("")
+            $("#income-amount__input").val("")
+        }
+    });
     function updateValue(){
         income = caculateTotal("income",ENTRY_LIST);
         outcome = caculateTotal("expense",ENTRY_LIST);
