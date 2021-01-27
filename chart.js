@@ -17,9 +17,9 @@ function drawCircle(color,ratio,anticlockwise){
     context.arc(canvas.width / 2, canvas.height/2 , R, 0, ratio * 2 * Math.PI, anticlockwise);
     context.stroke()
 }
-function updateDraw(income,outcome,drawCircle){
+function updateDraw(income,outcome,drawChart){
     context.clearRect(0,0,canvas.width,canvas.height);
     let ratio = income / (income + outcome);
-    drawCircle("#fefefe",ratio,true);
-    drawCircle("#f0264d",1 - ratio,false);
+    drawChart("#fefefe",- ratio,true);
+    drawChart("#f0264d",1 - ratio,false);
 }

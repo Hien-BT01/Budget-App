@@ -82,7 +82,6 @@ $(document).ready(function () {
                 <div class="delete"><i class="fas fa-trash"></i></div>
             </li>
         `
-        console.log(list)
         list.append(entry);
     }
     function clearElement(elements){
